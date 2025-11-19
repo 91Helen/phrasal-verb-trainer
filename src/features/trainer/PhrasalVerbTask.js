@@ -33,7 +33,7 @@ const PhrasalVerbTask = ({ verb, onAnswer, onPrev }) => {
 
   return (
     <div>
-      <p><i>Вставьте правильный глагол:</i></p>
+      <p><i>Вставьте правильный глагол в верной временной форме:</i></p>
       <p>{verb.exampleWithGap}</p>
       <input value={userInput} onChange={e => setUserInput(e.target.value)} disabled={checked && isCorrect} />
       <button onClick={handleCheck} disabled={checked && isCorrect}>Проверить</button>
