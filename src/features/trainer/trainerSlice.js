@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// Функция для выбора n случайных уникальных элементов
 const getRandomSubset = (array, n) => {
   if (array.length <= n) return array;
   const shuffled = array.slice().sort(() => 0.5 - Math.random());
@@ -27,23 +26,14 @@ const trainerSlice = createSlice({
       state.finished = false;
     },
     nextVerb(state) {
-      if (state.currentVerbIndex < state.trainingVerbs.length - 1) {
-        state.currentVerbIndex += 1;
-      } else {
-        state.finished = true;
-      }
+      if (state.currentVerbIndex < state.trainingVerbs.length - 1) state.currentVerbIndex += 1;
+      else state.finished = true;
     },
     prevVerb(state) {
-      if (state.currentVerbIndex > 0) {
-        state.currentVerbIndex -= 1;
-      }
+      if (state.currentVerbIndex > 0) state.currentVerbIndex -= 1;
     },
-    markCorrect(state) {
-      state.correctCount += 1;
-    },
-    markIncorrect(state) {
-      state.incorrectCount += 1;
-    },
+    markCorrect(state) { state.correctCount += 1; },
+    markIncorrect(state) { state.incorrectCount += 1; },
     resetTrainer(state) {
       state.currentVerbIndex = 0;
       state.correctCount = 0;
@@ -54,13 +44,5 @@ const trainerSlice = createSlice({
   },
 });
 
-export const {
-  startTraining,
-  nextVerb,
-  prevVerb,
-  markCorrect,
-  markIncorrect,
-  resetTrainer
-} = trainerSlice.actions;
-
+export const { startTraining, nextVerb, prevVerb, markCorrect, markIncorrect, resetTrainer } = trainerSlice.actions;
 export default trainerSlice.reducer;

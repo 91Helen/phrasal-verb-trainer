@@ -11,7 +11,6 @@ import {
 } from './trainerSlice';
 import { incrementCompleted } from '../progress/progressSlice';
 
-
 const TrainerContainer = () => {
   const dispatch = useDispatch();
 
@@ -22,7 +21,7 @@ const TrainerContainer = () => {
   const correctCount = useSelector(state => state.trainer.correctCount);
   const incorrectCount = useSelector(state => state.trainer.incorrectCount);
 
-  // Запускаем тренировку
+  // Начало тренировки
   const handleStart = () => {
     if (allVerbs.length > 0) {
       dispatch(startTraining(allVerbs));
@@ -42,7 +41,7 @@ const TrainerContainer = () => {
 
     if (isCorrect) {
       dispatch(markCorrect());
-      dispatch(incrementCompleted()); // <-- увеличиваем прогресс
+      dispatch(incrementCompleted()); // обновляем прогресс
     } else {
       dispatch(markIncorrect());
     }
@@ -54,12 +53,12 @@ const TrainerContainer = () => {
 
   const handleReset = () => dispatch(resetTrainer());
 
-  // Если тренировка ещё не начата
+  // Если тренировка ещё не началась
   if (trainingVerbs.length === 0) {
     return <button onClick={handleStart}>Начать тренировку</button>;
   }
 
-  // Если тренировка завершена
+  // Если тренировка закончена
   if (finished) {
     return (
       <div>
@@ -71,7 +70,7 @@ const TrainerContainer = () => {
     );
   }
 
-  // Основной тренажёр
+  // Основной компонент тренажёра
   return (
     <Trainer
       verbs={trainingVerbs}

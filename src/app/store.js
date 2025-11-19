@@ -1,4 +1,4 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // localStorage
 
@@ -8,26 +8,25 @@ import trainerReducer from '../features/trainer/trainerSlice';
 import settingsReducer from '../features/settings/settingsSlice';
 import progressReducer from '../features/progress/progressSlice';
 
-// объединяем редьюсеры
-const rootReducer = combineReducers({
-  verbs: verbsReducer,
-  favorites: favoritesReducer,
-  trainer: trainerReducer,
-  settings: settingsReducer,
-  progress: progressReducer,
-});
-
-// конфигурация persist — сохраняем только избранное
-const persistConfig = {
-  key: 'root',
+// persist настройки — сохраняем только избранное
+const favoritesPersistConfig = {
+  key: 'favorites',
   storage,
-  whitelist: ['favorites'],
 };
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedFavoritesReducer = persistReducer(
+  favoritesPersistConfig,
+  favoritesReducer
+);
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: {
+    verbs: verbsReducer,
+    favorites: persistedFavoritesReducer, // только избранное сохраняется
+    trainer: trainerReducer,
+    settings: settingsReducer,
+    progress: progressReducer,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
@@ -36,5 +35,4 @@ export const store = configureStore({
     }),
 });
 
-// для инициализации persist
 export const persistor = persistStore(store);

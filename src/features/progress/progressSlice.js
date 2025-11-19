@@ -1,33 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-
-const initialState = {
-  completedVerbs: 0,    // количество выученных глаголов
-  totalVerbs: 0,        // общее количество глаголов
-  lastUpdated: null,    // время последнего обновления прогресса
-};
-
-
 const progressSlice = createSlice({
-  name: 'progress',
-  initialState,
-  reducers: {
-    setTotalVerbs(state, action) {
-      state.totalVerbs = action.payload;
-    },
-    incrementCompleted(state) {
-      state.completedVerbs += 1;
-      state.lastUpdated = new Date().toISOString();
-    },
-    resetProgress(state) {
-      state.completedVerbs = 0;
-      state.lastUpdated = null;
-    },
-  },
+  name: 'progress',
+  initialState: {
+    completedVerbs: 0,
+    totalVerbs: 0,
+    lastUpdated: null,
+  },
+  reducers: {
+    setTotalVerbs(state, action) {
+      state.totalVerbs = action.payload;
+    },
+    incrementCompleted(state) {
+      state.completedVerbs += 1;
+      state.lastUpdated = Date.now();
+    },
+  },
 });
 
-
-export const { setTotalVerbs, incrementCompleted, resetProgress } = progressSlice.actions;
-
-
-export default progressSlice.reducer; 
+export const { setTotalVerbs, incrementCompleted } = progressSlice.actions;
+export default progressSlice.reducer;

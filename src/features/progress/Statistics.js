@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setTotalVerbs } from './progressSlice';
 
+
 const Statistics = () => {
   const dispatch = useDispatch();
   const completedVerbs = useSelector(state => state.progress.completedVerbs);
@@ -10,15 +11,14 @@ const Statistics = () => {
   const verbs = useSelector(state => state.verbs.verbs);
 
   useEffect(() => {
-    if (verbs && verbs.length) {
-      dispatch(setTotalVerbs(verbs.length));
-    }
+    if (verbs && verbs.length) dispatch(setTotalVerbs(verbs.length));
   }, [verbs, dispatch]);
 
-  const percent = totalVerbs > 0 ? ((completedVerbs / totalVerbs) * 100).toFixed(1) : 0;
+  const percent =
+    totalVerbs > 0 ? ((completedVerbs / totalVerbs) * 100).toFixed(1) : 0;
 
   return (
-    <div>
+    <div style={{ padding: 20 }}>
       <h2>Статистика прогресса</h2>
       <p>Выучено глаголов: {completedVerbs} из {totalVerbs}</p>
       <p>Процент выполнения: {percent}%</p>
