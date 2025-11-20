@@ -26,9 +26,11 @@ nav a.active {
 
 /* Стили для заголовков */
 h2 {
-  margin-top: 20px;
-  color: #007acc;
+  text-align: center;   /* центрирование текста */
+  margin-bottom: 20px;  /* небольшой отступ снизу */
+  color: var(--text-color); /* адаптация под тему */
 }
+
 
 /* Основной контейнер */
 main {
@@ -67,4 +69,9 @@ main {
 /* Отступы для `<header>` */
 header {
   margin-bottom: 20px;
+}
+.verbs-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--text-color); /* будет менять цвет в зависимости от темы */
 }

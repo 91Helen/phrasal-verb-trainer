@@ -35,10 +35,26 @@ const VerbCard = ({ verb }) => {
   };
 
   return (
-    <div style={{ border: '1px solid #ccc', padding: 10, margin: 10 }}>
+    <div
+      style={{
+        border: '1px solid #ccc',
+        padding: 20,
+        margin: 15,
+        borderRadius: 8,
+        background: 'var(--card-bg)',
+        color: 'var(--text-color)',
+        textAlign: 'center',
+        boxShadow: '0 2px 8px rgb(0 0 0 / 0.1)',
+      }}
+    >
       <h3>{verb.verb || '—'}</h3>
 
-      <button onClick={() => speakText(verb.verb)}>Прослушать глагол</button>
+      <button
+        onClick={() => speakText(verb.verb)}
+        style={{ margin: '10px 0', cursor: 'pointer' }}
+      >
+        Прослушать глагол
+      </button>
 
       <p>
         <strong>Перевод:</strong> {verb.translation || '—'}
@@ -48,19 +64,40 @@ const VerbCard = ({ verb }) => {
         <strong>Пример:</strong> {exampleText}
       </p>
 
-      <button onClick={() => speakText(exampleText)}>Прослушать пример</button>
+      <button
+        onClick={() => speakText(exampleText)}
+        style={{ margin: '10px 0', cursor: 'pointer' }}
+      >
+        Прослушать пример
+      </button>
 
       {verb.imageUrl && (
         <div style={{ marginTop: 10 }}>
           <img
             src={verb.imageUrl}
             alt={verb.verb}
-            style={{ maxWidth: '100%', borderRadius: 4 }}
+            style={{
+              width: '300px',
+              maxWidth: '100%',
+              borderRadius: 6,
+              marginTop: 10,
+            }}
           />
         </div>
       )}
 
-      <button onClick={toggleFavorite} style={{ marginTop: 10 }}>
+      <button
+        onClick={toggleFavorite}
+        style={{
+          marginTop: 10,
+          padding: '6px 12px',
+          cursor: 'pointer',
+          borderRadius: 4,
+          background: '#007acc',
+          color: '#fff',
+          border: 'none',
+        }}
+      >
         {isFavorite ? 'Удалить из избранного' : 'Добавить в избранное'}
       </button>
     </div>

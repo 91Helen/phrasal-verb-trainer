@@ -55,8 +55,8 @@ const phrasalVerbsData = [
     pastForm: 'called off',  
     requiresPast: true,
     translation: 'отменять', 
-    example: 'They called off the meeting due to the storm.', 
-    exampleWithGap: 'They _____ the meeting due to the storm.', 
+    example: 'She called off the meeting due to the storm.', 
+    exampleWithGap: 'She _____ the meeting due to the storm.', 
     imageUrl: "/images/call-off-example.jpg" 
   },
   { 

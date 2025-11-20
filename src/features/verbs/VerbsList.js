@@ -7,8 +7,8 @@ const VerbsList = () => {
 
   return (
     <div>
-      <h2>Список фразовых глаголов</h2>
-      {verbs.map(verb => (
+    <h2 className="verbs-title">Список фразовых глаголов</h2>
+     {verbs.map(verb => (
         <VerbCard key={verb.id} verb={verb} />
       ))}
     </div>
