@@ -16,7 +16,7 @@ Built with **React + Redux Toolkit** featuring smooth UI, animations, and progre
 ---
 ## 📸 Screenshot
 
-![App Screenshot](./path/to/screenshot.png)
+  <img src="https://github.com/91Helen/phrasal-verb-trainer/blob/main/desktop-app.png?raw=true" alt="Desktop Screenshot" width="450" style="margin-right:10px;"/>
 
 
 ## 🚀 About the Project
@@ -186,6 +186,8 @@ npm start
 * возможность дальнейшего расширения
 
 ---
+## 📸 Screenshot
+<img src="https://github.com/91Helen/phrasal-verb-trainer/blob/main/mobile-app.png?raw=true" alt="Mobile Screenshot" width="250"/>
 
 ## 🧠 Технологии
 
