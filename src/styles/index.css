@@ -1,77 +1,569 @@
-/* Основные стили для всего приложения */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  margin: 0;
-  padding: 0;
-  color: #333;
+/* =============================
+   Основные стили приложения
+   ============================= */
+
+:root {
+  --bg: #f2f6fc;
+  --card-bg: #ffffff;
+  --primary: #0077ff;
+  --primary-dark: #0059c9;
+  --text: #222;
+  --text-light: #666;
+  --shadow: 0 4px 14px rgba(0,0,0,0.08);
 }
 
-/* Стили для навигации */
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  font-family: "Inter", Arial, sans-serif;
+  color: var(--text);
+}
+
+/* =============================
+   Навигация
+   ============================= */
+
 nav {
+  background: var(--primary);
+  padding: 14px 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  box-shadow: var(--shadow);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: 0.25s;
+}
+
+nav a:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+nav a.active {
+  background: rgba(255,255,255,0.32);
+}
+
+/* * Бургер-меню */ */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #007acc;
   padding: 10px 20px;
 }
 
-nav a {
+.burger {
+  display: none; /* скрыт на десктопе */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.burger .line {
+  height: 3px;
+  background-color: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Анимация крестика при открытии */
+.burger .line.open:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger .line.open:nth-child(2) {
+  opacity: 0;
+}
+
+.burger .line.open:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-links a {
   color: #fff;
   text-decoration: none;
-  margin-right: 15px;
   font-weight: bold;
 }
 
-nav a.active {
+.nav-links a.active {
   text-decoration: underline;
 }
+/* =============================
+   Заголовки
+   ============================= */
 
-/* Стили для заголовков */
-h2 {
-  text-align: center;   /* центрирование текста */
-  margin-bottom: 20px;  /* небольшой отступ снизу */
-  color: var(--text-color); /* адаптация под тему */
+h2, .verbs-title {
+  text-align: center;
+  margin: 20px 0 25px;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary-dark);
 }
 
+/* =============================
+   Основной контейнер
+   ============================= */
 
-/* Основной контейнер */
 main {
-  padding: 20px;
-  max-width: 900px;
-  margin: 0 auto;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  max-width: 850px;
+  margin: 30px auto;
+  background: var(--card-bg);
+  padding: 25px 30px;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
 }
 
-/* Стили для карточек глаголов */
+/* =============================
+   Карточка глагола
+   ============================= */
+
 .verb-card {
-  border: 1px solid #ccc;
-  padding: 12px;
-  margin-bottom: 15px;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 18px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  transition: 0.3s;
 }
 
 .verb-card:hover {
-  background-color: #e6f2ff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
-/* Текст перевода и примера */
+.verb-card h3 {
+  margin-top: 0;
+  font-size: 22px;
+  color: var(--primary-dark);
+}
+
 .verb-card p {
   margin: 6px 0;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
-.verb-card small {
-  color: #666;
+.verb-card button {
+  margin-top: 10px;
 }
 
-/* Отступы для `<header>` */
-header {
+/* /* =============================
+   Кнопки
+   ============================= */
+
+button {
+  padding: 9px 14px;
+  border-radius: 8px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.22s;
+}
+
+button:hover {
+  background: var(--primary-dark);
+}
+
+button:disabled {
+  background: #9dbbe7;
+  cursor: not-allowed;
+} */
+
+/* =============================
+   Тренажёр — карточка
+   ============================= */
+
+.task-wrapper {
+  background: #fff;
+  padding: 25px 25px;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
   margin-bottom: 20px;
 }
-.verbs-title {
+
+.task-wrapper p {
+  font-size: 18px;
+}
+
+/* Инпут */
+input {
+  width: 100%;
+  margin: 10px 0 15px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #d2ddf0;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* Сообщения */
+.correct {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.incorrect {
+  color: #e03131;
+  font-weight: bold;
+}
+
+.warning {
+  color: #f0b10a;
+  font-weight: 600;
+}
+
+.answer {
+  color: #0059c9;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+/* =============================
+   Картинки глаголов
+   ============================= */
+
+.verb-image {
+  display: block;
+  margin: 15px auto 0;
+  max-width: 65%;
+  border-radius: 10px;
+}
+
+/* HomePage */
+.home-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ---------- БАННЕР ---------- */
+
+.welcome-banner {
   text-align: center;
+  background: linear-gradient(#e7f2ff, #ffffff);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.welcome-banner h1 {
+  margin-bottom: 10px;
+  color: #0059b3;
+}
+
+.subtitle {
+  font-size: 18px;
   margin-bottom: 20px;
-  color: var(--text-color); /* будет менять цвет в зависимости от темы */
+  color: #333;
+}
+
+.actions {
+  margin-bottom: 20px;
+}
+
+.action-btn {
+  display: inline-block;
+  margin: 8px;
+  padding: 10px 18px;
+  font-size: 16px;
+  background: #007acc;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.action-btn:hover {
+  background: #005ea3;
+}
+
+.start { background: #ff5722; }
+.start:hover { background: #e64a19; }
+
+.verbs { background: #007acc; }
+.fav { background: #d4a017; }
+.fav:hover { background: #b88908; }
+
+.banner-image {
+  width: 60%;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+/* ---------- С ЧЕГО НАЧАТЬ ---------- */
+
+.steps {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.step-list {
+  margin-top: 15px;
+}
+
+.step {
+  padding: 10px;
+  margin: 8px 0;
+  background: #f4f7fb;
+  border-radius: 8px;
+  font-size: 18px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* ---------- ЦИТАТА ---------- */
+
+.quote-block {
+  margin-top: 40px;
+  padding: 20px;
+  text-align: center;
+  font-style: italic;
+  background: #fff;
+  border-left: 4px solid #007acc;
+}
+
+.quote {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.author {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Trainer */
+
+.trainer-wrapper, .trainer-start, .trainer-finished {
+  max-width: 700px;
+  margin: 20px auto;
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgb(0 0 0 / 0.1);
+  text-align: center;
+}
+
+/* Заголовки */
+.trainer-wrapper h2, .trainer-start h2, .trainer-finished h2 {
+  font-size: 26px;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+
+
+/* Параграфы */
+.trainer-wrapper p, .trainer-start p, .trainer-finished p {
+  color: var(--text-color);
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+/* Центрирование контента */
+.trainer-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trainer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 14px;    
+  margin-top: 15px;
+}
+
+.hint-box {
+  margin-top: 15px;
+  padding: 12px 15px;
+  background: #fff7d1;
+  border-left: 4px solid #f0b10a;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #7a6200;
+  font-weight: 500;
+}
+.correct { color: #2ecc71 !important; font-weight: bold; }
+.incorrect { color: #e74c3c !important; font-weight: bold; }
+
+.answer { color: #0059c9; font-weight: bold; margin-top: 8px; }
+.warning { color: orange; font-weight: 600; }
+
+.yellow-hint {
+  color: orange !important;
+  font-weight: 600;
+}
+
+/* =============================
+   Мобильная адаптация
+   ============================= */
+
+/* Планшеты (1024px и меньше) */
+@media (max-width: 1024px) {
+  main, .trainer-wrapper, .trainer-start, .trainer-finished {
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .verb-card {
+    padding: 14px;
+  }
+
+  .task-wrapper {
+    padding: 20px;
+  }
+
+  input {
+    font-size: 15px;
+  }
+
+  button, .btn-primary {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+
+  .trainer-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .banner-image {
+    width: 80%;
+  }
+
+  .action-btn {
+    font-size: 15px;
+    padding: 8px 14px;
+  }
+}
+
+/* Смартфоны и маленькие планшеты (768px и меньше) */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 15px;
+  }
+
+  h2, .verbs-title {
+    font-size: 22px;
+    margin: 15px 0 20px;
+  }
+
+  main {
+    padding: 15px 20px;
+    margin: 15px auto;
+  }
+
+  .verb-card {
+    padding: 12px;
+  }
+
+  input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  button, .btn-primary {
+    font-size: 13px;
+    padding: 7px 12px;
+  }
+
+  .trainer-buttons {
+    gap: 8px;
+  }
+
+  .banner-image {
+    width: 90%;
+  }
+
+  .task-wrapper p {
+    font-size: 16px;
+  }
+  .burger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 55px;
+    left: 0;
+    right: 0;
+    background-color: #007acc;
+    flex-direction: column;
+    align-items: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .nav-links.open {
+    max-height: 300px; /* достаточно для всех ссылок */
+  }
+
+  .nav-links a {
+    margin: 10px 0;
+  }
+}
+
+/* Очень маленькие смартфоны (480px и меньше) */
+@media (max-width: 480px) {
+  nav {
+    padding: 8px 10px;
+  }
+
+  h2, .verbs-title {
+    font-size: 20px;
+  }
+
+  main {
+    padding: 10px 15px;
+    margin: 10px auto;
+  }
+
+  .verb-card {
+    padding: 10px;
+  }
+
+  input {
+    font-size: 13px;
+    padding: 6px;
+  }
+
+  button, .btn-primary {
+    font-size: 12px;
+    padding: 6px 10px;
+    margin:5px;
+  }
+
+  .trainer-buttons {
+    gap: 6px;
+  }
+
+  .task-wrapper p {
+    font-size: 15px;
+  }
 }

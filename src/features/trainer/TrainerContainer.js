@@ -10,6 +10,8 @@ import {
   prevVerb
 } from './trainerSlice';
 import { incrementCompleted } from '../progress/progressSlice';
+import '../../styles/index.css';
+
 
 const TrainerContainer = () => {
   const dispatch = useDispatch();
@@ -21,7 +23,6 @@ const TrainerContainer = () => {
   const correctCount = useSelector(state => state.trainer.correctCount);
   const incorrectCount = useSelector(state => state.trainer.incorrectCount);
 
-  // Начало тренировки
   const handleStart = () => {
     if (allVerbs.length > 0) {
       dispatch(startTraining(allVerbs));
@@ -30,10 +31,7 @@ const TrainerContainer = () => {
     }
   };
 
-  // Обработка ответа пользователя
   const handleAnswer = (isCorrect, nextStep) => {
-    // nextStep может быть: true / false / "prev"
-
     if (nextStep === "prev") {
       dispatch(prevVerb());
       return;
@@ -41,42 +39,45 @@ const TrainerContainer = () => {
 
     if (isCorrect) {
       dispatch(markCorrect());
-      dispatch(incrementCompleted()); // обновляем прогресс
+      dispatch(incrementCompleted());
     } else {
       dispatch(markIncorrect());
     }
 
-    if (nextStep === true) {
-      dispatch(nextVerb());
-    }
+    if (nextStep === true) dispatch(nextVerb());
   };
 
   const handleReset = () => dispatch(resetTrainer());
 
-  // Если тренировка ещё не началась
   if (trainingVerbs.length === 0) {
-    return <button onClick={handleStart}>Начать тренировку</button>;
-  }
-
-  // Если тренировка закончена
-  if (finished) {
     return (
-      <div>
-        <h2>Тренировка окончена!</h2>
-        <p>Правильных ответов: {correctCount}</p>
-        <p>Неправильных ответов: {incorrectCount}</p>
-        <button onClick={handleReset}>Начать заново</button>
+      <div className="trainer-start">
+        <h2>🔥 Начать тренировку</h2>
+        <button className="btn-primary" onClick={handleStart}>Начать</button>
+        <p>Приступить к тренировке</p>
       </div>
     );
   }
 
-  // Основной компонент тренажёра
+  if (finished) {
+    return (
+      <div className="trainer-finished">
+        <h2>🏁 Тренировка окончена!</h2>
+        <p>Правильных ответов: {correctCount} Поздравляю! Это успех!</p>
+        <p>Неправильных ответов: {incorrectCount} Не сдавайся! Попробуй еще!</p>
+        <button className="btn-primary" onClick={handleReset}>Начать заново</button>
+      </div>
+    );
+  }
+
   return (
-    <Trainer
-      verbs={trainingVerbs}
-      currentIndex={currentVerbIndex}
-      onAnswer={handleAnswer}
-    />
+    <div className="trainer-wrapper">
+      <Trainer
+        verbs={trainingVerbs}
+        currentIndex={currentVerbIndex}
+        onAnswer={handleAnswer}
+      />
+    </div>
   );
 };
 

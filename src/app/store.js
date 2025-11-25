@@ -5,7 +5,6 @@ import storage from 'redux-persist/lib/storage'; // localStorage
 import verbsReducer from '../features/verbs/verbsSlice';
 import favoritesReducer from '../features/favorites/favoritesSlice';
 import trainerReducer from '../features/trainer/trainerSlice';
-import settingsReducer from '../features/settings/settingsSlice';
 import progressReducer from '../features/progress/progressSlice';
 
 // persist настройки — сохраняем только избранное
@@ -24,7 +23,6 @@ export const store = configureStore({
     verbs: verbsReducer,
     favorites: persistedFavoritesReducer, // только избранное сохраняется
     trainer: trainerReducer,
-    settings: settingsReducer,
     progress: progressReducer,
   },
   middleware: (getDefaultMiddleware) =>
