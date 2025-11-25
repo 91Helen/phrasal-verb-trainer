@@ -521,7 +521,7 @@ input:focus {
   }
 
   .nav-links.open {
-    max-height: 300px; /* достаточно для всех ссылок */
+    max-height: 300px; 
   }
 
   .nav-links a {

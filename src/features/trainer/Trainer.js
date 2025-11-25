@@ -8,7 +8,7 @@ const Trainer = ({ verbs, currentIndex, onAnswer }) => {
   const [answeredCorrectly, setAnsweredCorrectly] = useState(null);
   const [isWaitingNext, setIsWaitingNext] = useState(false);
 
-  // Храним ответы пользователя для всех заданий
+  // ответы пользователя для всех заданий
   const [savedAnswers, setSavedAnswers] = useState({});
 
   const currentVerb = verbs[currentIndex];
@@ -18,7 +18,7 @@ const Trainer = ({ verbs, currentIndex, onAnswer }) => {
   useEffect(() => {
     if (!currentVerb) return;
 
-    // Загружаем предыдущий ответ, если он был
+    // предыдущий ответ, если он был
     if (savedAnswers[currentVerb.id]) {
       const ans = savedAnswers[currentVerb.id];
       setSelectedIdx(ans.selectedIdx ?? null);
@@ -30,7 +30,7 @@ const Trainer = ({ verbs, currentIndex, onAnswer }) => {
 
     setIsWaitingNext(false);
 
-    // Генерируем варианты для упражнения №1
+    // варианты для упражнения №1
     const wrong = shuffleArray(
       verbs.filter(v => v.id !== currentVerb.id).map(v => v.translation)
     ).slice(0,2);

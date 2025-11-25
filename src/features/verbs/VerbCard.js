@@ -15,7 +15,7 @@ const VerbCard = ({ verb }) => {
     }
   };
 
-  // --- безопасно получаем пример ---
+  //  пример ---
   const exampleText =
     typeof verb.example === 'string'
       ? verb.example
@@ -24,7 +24,7 @@ const VerbCard = ({ verb }) => {
   const toggleFavorite = () => {
     const cleanedVerb = {
       ...verb,
-      example: exampleText, // теперь всегда строка
+      example: exampleText, 
     };
 
     if (isFavorite) {
