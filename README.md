@@ -8,79 +8,80 @@
 
 ---
 
-# 🇬🇧 English Version
-
 ## 📘 English Phrasal Verbs Trainer
 
-An interactive training application for learning English phrasal verbs.
-Built as a modern SPA using **React + Redux Toolkit**, with smooth UI/UX, animations, and persistent saved progress.
+An interactive SPA for learning English phrasal verbs.  
+Built with **React + Redux Toolkit** featuring smooth UI, animations, and progress persistence.
 
 ---
+## 📸 Screenshot
+
+![App Screenshot](./path/to/screenshot.png)
+
 
 ## 🚀 About the Project
 
-**English Phrasal Verbs Trainer** is an educational tool designed with a focus on:
+The application is developed with a focus on:
 
-* Clean, scalable architecture
-* Smooth UX
-* Maintainable, readable code
-* Modern React practices
-* Persistent user progress
-* Modularity and easy future expansion
+* clean and scalable architecture
+* modern UI/UX
+* readable and maintainable code
+* proper state management
+* modular structure
+* easy future extension
 
 ---
 
-## 🧠 Tech Stack
+## 🧠 Technologies
 
 ### 🔹 Frontend
 
 * React 18
-* React Hooks (useState, useEffect, useCallback, useMemo, useRef)
+* React Hooks
 * React Router
-* Adaptive UI (CSS, Flexbox/Grid)
-* Custom components & CSS animations
+* Responsive CSS layout
+* CSS animations, custom UI components
 
 ### 🔹 State Management
 
 * **Redux Toolkit**
-* **Redux Persist** for saving user progress
+* **Redux Persist** (for saving progress)
 
 ### 🔹 Architecture
 
-* Feature-based folder structure
-* Modules: `verbs`, `trainer`, `progress`, `favorites`, `ui`
+* Feature-based structure
+* Modules: `verbs`, `trainer`, `progress`, `favorites`
+* **UI** styles centralized via CSS with variables for colors, shadows, and responsiveness
 
 ---
 
-## 🎯 Core Features
+## 🎯 Functionality
 
 ### ✔ Training Modes
 
-* Multiple question types:
+* multiple-choice translation
+* input-based answers
+* verb recall exercises
+* "Next"/"Previous" buttons
+* correct/incorrect answer highlighting
+* training completion screen
 
-  * choose correct translation
-  * input your answer
-  * reconstruct the phrasal verb
-* Previous/Next navigation
-* Highlighted correct/incorrect answers
-* Training completion screen
+### ✔ Statistics
 
-### ✔ Progress Tracking
-
-Each answer stores:
+Every action records:
 
 * `id` (Date.now)
-* `status` (“correct” / “incorrect”)
+* `status` ("correct" / "incorrect")
 * `createdAt` (ISO timestamp)
 
 ### ✔ Favorites
 
-* Add verbs to favorites
-* Train only favorite verbs
+* add verbs to favorites
+* train using only favorite verbs
 
-### ✔ Persisted Progress
+### ✔ Progress Persistence
 
-Redux Persist restores training, statistics, and favorite verbs.
+State restoration using Redux Persist.
 
 ---
 
@@ -88,46 +89,48 @@ Redux Persist restores training, statistics, and favorite verbs.
 
 ### ✔ Animated Burger Menu
 
-* Top line → rotate 45°
-* Middle line → fade out
-* Bottom line → rotate –45°
-* Smooth mobile animation, static desktop menu
+Smooth mobile animation.
 
-### ✔ Fully Responsive Layout
+### ✔ Responsive Interface
 
-From 320px mobile to large screens.
+Clean, neat, and user-friendly.
 
 ---
 
-## 🏗 Architecture Overview
+## 🏗 Architecture
 
-### 📌 TrainerContainer
+### 🔹 Folder Structure
 
-Handles:
-
-* start training
-* answer processing
-* navigation
-* training reset
-* passes data into `<Trainer />`
-
-```jsx
-<Trainer
-  verbs={trainingVerbs}
-  currentIndex={currentVerbIndex}
-  onAnswer={handleAnswer}
-/>
+```bash
+src/
+├─ app/
+│  └─ store.js                     # Redux store
+├─ components/
+│  ├─ PhrasalVerbsTrainer.js       # Main app component
+│  └─ HomePage.js                  # Home page
+├─ data/
+│  └─ data.js                       # Initial data (verbs and examples)
+├─ features/
+│  ├─ favorites/
+│  │  ├─ Favorites.js              # Favorites component
+│  │  └─ favoritesSlice.js         # Favorites logic
+│  ├─ progress/
+│  │  ├─ Statistics.js             # Statistics component
+│  │  └─ progressSlice.js          # Statistics & history logic
+│  ├─ trainer/
+│  │  ├─ PhrasalVerbTask.js        # Training task component
+│  │  ├─ Trainer.js                # Trainer component
+│  │  ├─ TrainerContainer.js       # Trainer container
+│  │  └─ trainerSlice.js           # Training logic
+│  ├─ verbs/
+│  │  ├─ VerbCard.js               # Verb card
+│  │  ├─ VerbList.js               # Verbs list
+│  │  └─ verbsSlice.js             # Verbs logic
+├─ styles/
+│  └─ index.css                     # Main styles & responsive
+├─ App.js                            # Main routing
+└─ index.js                          # App entry point
 ```
-
-### 📌 Redux Logic
-
-**trainerSlice** manages:
-`trainingVerbs`, `currentVerbIndex`, `correctCount`, `incorrectCount`, `finished`
-
-**progressSlice** manages:
-history of completed verbs, total solved
-
----
 
 ## 📦 Installation
 
@@ -144,8 +147,8 @@ npm start
 
 ### Hard Skills
 
-* React (Middle level)
-* Redux Toolkit (pro level)
+* Advanced React
+* Redux Toolkit
 * Architecture design
 * State management
 * Clean, scalable code
@@ -162,7 +165,7 @@ npm start
 
 ---
 
-# 🇷🇺 Русская версия
+# 🌍 RU
 
 ## 📘 English Phrasal Verbs Trainer
 
@@ -203,7 +206,7 @@ npm start
 
 * Feature-based структура
 * Модули: `verbs`, `trainer`, `progress`, `favorites`
-* - **UI** стили централизованы через CSS с переменными для цветов, теней и адаптивности. 
+*  **UI** стили централизованы через CSS с переменными для цветов, теней и адаптивности. 
 
 ---
 
@@ -241,7 +244,7 @@ npm start
 
 ### ✔ Анимированное бургер-меню
 
-* плавная мобильная анимация
+ Плавная мобильная анимация.
 
 ### ✔ Адаптивный интерфейс
 
@@ -251,35 +254,38 @@ npm start
 
 ## 🏗 Архитектура
 
-### 📌 Компонент TrainerContainer
-
-Отвечает за:
-
-* запуск тренировки
-* обработку ответов
-* переключение глаголов
-* завершение
-* передачу данных в Trainer
-
-
-### 📌 Redux
-
-**trainerSlice** 🏋️ — логика тренировки &nbsp;&nbsp;|&nbsp;&nbsp; **progressSlice** 📊 — статистика и история
-
-
-
 ### 🔹 Структура папок / Folder Structure
 
 ```bash
 src/
-├─ components/         # Общие компоненты (баннер, шаги, цитаты) / Common components (banner, steps, quotes)
+├─ app/
+│  └─ store.js                     # Redux store
+├─ components/
+│  ├─ PhrasalVerbsTrainer.js       # Основной компонент приложения
+│  └─ HomePage.js                  # Домашняя страница
+├─ data/
+│  └─ data.js                       # Исходные данные (глаголы и примеры)
 ├─ features/
-│  ├─ verbs/           # Список глаголов / Verbs list
-│  ├─ trainer/         # Логика тренажёра / Trainer logic
-│  ├─ favorites/       # Избранные глаголы / Favorite verbs
-│  ├─ progress/        # Статистика / Progress tracking
-├─ styles/             # Основные стили и адаптивность / Main styles & responsive
-└─ App.js              # Основной роутинг / Main routing
+│  ├─ favorites/
+│  │  ├─ Favorites.js              # Компонент избранного
+│  │  └─ favoritesSlice.js         # Логика избранного
+│  ├─ progress/
+│  │  ├─ Statistics.js             # Компонент статистики
+│  │  └─ progressSlice.js          # Логика статистики и истории
+│  ├─ trainer/
+│  │  ├─ PhrasalVerbTask.js        # Компонент задания тренажёра
+│  │  ├─ Trainer.js                # Компонент тренажёра
+│  │  ├─ TrainerContainer.js       # Контейнер тренажёра
+│  │  └─ trainerSlice.js           # Логика тренировки
+│  ├─ verbs/
+│  │  ├─ VerbCard.js               # Карточка глагола
+│  │  ├─ VerbList.js               # Список глаголов
+│  │  └─ verbsSlice.js             # Логика глаголов
+├─ styles/
+│  └─ index.css                     # Основные стили и адаптивность
+├─ App.js                            # Основной роутинг
+└─ index.js                          # Точка входа приложения
+
 ```
 
 ## 📦 Установка
